@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>features/pets/pets.feature</title>
+        <style>body { font-family: monospace, monospace; font-size: small; } table { border-collapse: collapse; } table td { border: 1px solid gray; padding: 0.1em 0.2em; } .scenario-heading { background-color: #F5F28F; padding: 0.2em 0.5em; border-bottom: 1px solid gray; } .scenario-name { font-weight: bold; } .scenario { border: 1px solid gray; margin-bottom: 1em; } .scenario-steps { padding-left: 0.2em; } .scenario-steps-nested { padding-left: 2em; } .step-row { margin: 0.2em 0; } .step-cell { background-color: #92DD96; display: inline-block; width: 85%; padding: 0.2em 0.5em; } .time-cell { background-color: #92DD96; display: inline-block; width: 10%; padding: 0.2em 0.5em; } .failed { background-color: #F2928C; } .skipped { background-color: #8AF; }</style>
+    </head>
+    <body>
+        <div>
+            <div class="scenario">
+                <div class="scenario-heading">
+                    <span class="scenario-keyword">Scenario: </span><span class="scenario-name">Agregar una mascota realizando un POST al path/v2/pet</span>
+                </div>
+                <div class="scenario-steps">
+                    <div class="step-row">
+                        <div class="step-cell">* def pet = read('pet.json')</div>
+                        <div class="time-cell">0.910427</div>
+                    </div>
+                    <pre>22:00:37.407 INFO  - karate.env system property was: null 
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">* def expectedSchema = read('petDataTypes.json')</div>
+                        <div class="time-cell">0.018172</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">Given url 'https://petstore.swagger.io/v2'+"/pet"</div>
+                        <div class="time-cell">0.013658</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">And request pet</div>
+                        <div class="time-cell">0.000141</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">When method post</div>
+                        <div class="time-cell">1.188412</div>
+                    </div>
+                    <pre>22:00:37.805 DEBUG - 
+1 &gt; POST https://petstore.swagger.io/v2/pet
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 166
+1 &gt; Content-Type: application/json
+1 &gt; Host: petstore.swagger.io
+1 &gt; User-Agent: Apache-HttpClient/4.5.3 (Java/11.0.11)
+{"id":12352131321233,"category":{"id":0,"name":"string"},"name":"testing dog baufest","photoUrls":["string"],"tags":[{"id":0,"name":"tag name"}],"status":"available"}
+
+22:00:38.682 DEBUG - 
+1 &lt; 200
+1 &lt; Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Connection: keep-alive
+1 &lt; Content-Type: application/json
+1 &lt; Date: Tue, 11 May 2021 01:00:38 GMT
+1 &lt; Server: Jetty(9.2.9.v20150224)
+1 &lt; Transfer-Encoding: chunked
+{"id":12352131321233,"category":{"id":0,"name":"string"},"name":"testing dog baufest","photoUrls":["string"],"tags":[{"id":0,"name":"tag name"}],"status":"available"}
+
+22:00:38.683 DEBUG - response time in milliseconds: 1178
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">Then status 200</div>
+                        <div class="time-cell">0.000644</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">* match response == expectedSchema</div>
+                        <div class="time-cell">0.000894</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">* match response == pet</div>
+                        <div class="time-cell">0.000362</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario">
+                <div class="scenario-heading">
+                    <span class="scenario-keyword">Scenario: </span><span class="scenario-name">Traer la mascota creada realizando un POST al path/v2/pet</span>
+                </div>
+                <div class="scenario-steps">
+                    <div class="step-row">
+                        <div class="step-cell">* def pet = read('pet.json')</div>
+                        <div class="time-cell">0.092276</div>
+                    </div>
+                    <pre>22:00:38.772 INFO  - karate.env system property was: null 
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">Given url 'https://petstore.swagger.io/v2'+ "/pet/" +  "12352131321233"</div>
+                        <div class="time-cell">0.008503</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">When method get</div>
+                        <div class="time-cell">0.733747</div>
+                    </div>
+                    <pre>22:00:38.796 DEBUG - 
+1 &gt; GET https://petstore.swagger.io/v2/pet/12352131321233
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Host: petstore.swagger.io
+1 &gt; User-Agent: Apache-HttpClient/4.5.3 (Java/11.0.11)
+
+22:00:39.527 DEBUG - 
+1 &lt; 200
+1 &lt; Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Connection: keep-alive
+1 &lt; Content-Type: application/json
+1 &lt; Date: Tue, 11 May 2021 01:00:39 GMT
+1 &lt; Server: Jetty(9.2.9.v20150224)
+1 &lt; Transfer-Encoding: chunked
+{"id":12352131321233,"category":{"id":0,"name":"string"},"name":"testing dog baufest","photoUrls":["string"],"tags":[{"id":0,"name":"tag name"}],"status":"available"}
+
+22:00:39.528 DEBUG - response time in milliseconds: 733
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">Then status 200</div>
+                        <div class="time-cell">0.000251</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">And match pet == response</div>
+                        <div class="time-cell">0.000715</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario">
+                <div class="scenario-heading">
+                    <span class="scenario-keyword">Scenario: </span><span class="scenario-name">Modificar la mascota creada realizando un POST al path/v2/pet</span>
+                </div>
+                <div class="scenario-steps">
+                    <div class="step-row">
+                        <div class="step-cell">* def petModified = read('petSold.json')</div>
+                        <div class="time-cell">0.090144</div>
+                    </div>
+                    <pre>22:00:39.615 INFO  - karate.env system property was: null 
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">Given url 'https://petstore.swagger.io/v2'+ "/pet"</div>
+                        <div class="time-cell">0.014553</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">And request petModified</div>
+                        <div class="time-cell">0.000085</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">When method put</div>
+                        <div class="time-cell">0.742589</div>
+                    </div>
+                    <pre>22:00:39.648 DEBUG - 
+1 &gt; PUT https://petstore.swagger.io/v2/pet
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 166
+1 &gt; Content-Type: application/json
+1 &gt; Host: petstore.swagger.io
+1 &gt; User-Agent: Apache-HttpClient/4.5.3 (Java/11.0.11)
+{"id":12352131321233,"category":{"id":0,"name":"string"},"name":"testing dog baufest sold","photoUrls":["string"],"tags":[{"id":0,"name":"tag name"}],"status":"sold"}
+
+22:00:40.386 DEBUG - 
+1 &lt; 200
+1 &lt; Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Connection: keep-alive
+1 &lt; Content-Type: application/json
+1 &lt; Date: Tue, 11 May 2021 01:00:40 GMT
+1 &lt; Server: Jetty(9.2.9.v20150224)
+1 &lt; Transfer-Encoding: chunked
+{"id":12352131321233,"category":{"id":0,"name":"string"},"name":"testing dog baufest sold","photoUrls":["string"],"tags":[{"id":0,"name":"tag name"}],"status":"sold"}
+
+22:00:40.388 DEBUG - response time in milliseconds: 741
+</pre>
+                    <div class="step-row">
+                        <div class="step-cell">Then status 200</div>
+                        <div class="time-cell">0.000195</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-cell">And match petModified == response</div>
+                        <div class="time-cell">0.000712</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

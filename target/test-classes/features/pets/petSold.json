@@ -1,0 +1,18 @@
+{
+    "id": 12352131321233,
+    "category": {
+        "id": 0,
+        "name": "string"
+    },
+    "name": "testing dog baufest sold",
+    "photoUrls": [
+        "string"
+    ],
+    "tags": [
+        {
+            "id": 0,
+            "name": "tag name"
+        }
+    ],
+    "status": "sold"
+}
